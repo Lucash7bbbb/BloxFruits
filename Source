@@ -1,0 +1,118 @@
+-- Simulação de script educacional com mensagens fictícias e movimento automático
+
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+local Chat = game:GetService("Chat")
+local RunService = game:GetService("RunService")
+local TeleportService = game:GetService("TeleportService")
+
+-- Substitua pelo ID do lugar para onde deseja teletransportar o jogador
+local PLACE_ID_TO_TELEPORT = 14742214013  -- Substitua com o ID do lugar desejado
+
+-- Função para exibir uma notificação
+local function Notify(title, text)
+    StarterGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = 5
+    })
+end
+
+-- Função para tocar uma música fictícia
+local function PlayMusic()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://8949138878"  -- Substitua por um ID de música fictícia
+    sound.Parent = game.Workspace
+    sound:Play()
+end
+
+-- Função para simular mensagens fictícias no GUI
+local function SimulateMessages()
+    local messages = {
+        "Iniciando análise...",
+        "Conectando ao IP: 192.168.1.1",
+        "Verificando DNS: 8.8.8.8",
+        "Analisando dados...",
+        "Nenhuma falha encontrada.",
+        "Processo concluído com sucesso."
+    }
+    for _, message in ipairs(messages) do
+        Notify("Status", message)
+        wait(2) -- Pausa entre as mensagens
+    end
+end
+
+-- Função para flodar o chat com uma mensagem fictícia
+local function FloodChat()
+    local player = Players.LocalPlayer
+    for i = 1, 5 do
+        Chat:Chat(player.Character.Head, "SUA CONTA FOI R0UB4DA KKK" .. i, Enum.ChatColor.Blue)
+        wait(1) -- Pausa entre as mensagens no chat
+    end
+end
+
+-- Função para teletransportar o jogador para outro lugar
+local function TeleportPlayer()
+    Notify("Ação concluída", "Você está sendo controlado virtualmente")
+    wait(3) -- Pausa antes de teletransportar o jogador
+
+    TeleportService:Teleport(PLACE_ID_TO_TELEPORT, Players.LocalPlayer)
+end
+
+-- Função para mover o jogador sozinho
+local function AutoWalk()
+    local player = Players.LocalPlayer
+    local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        -- Força o jogador a se mover
+        local moveVector = Vector3.new(0, 0, 1) -- Mover para frente
+        RunService.RenderStepped:Connect(function()
+            humanoid:Move(moveVector)
+        end)
+    end
+end
+
+-- Função para exibir uma imagem no meio da tela
+local function ShowImage()
+    local player = Players.LocalPlayer
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "ImageGui"
+    screenGui.Parent = player:WaitForChild("PlayerGui")
+
+    local imageLabel = Instance.new("ImageLabel")
+    imageLabel.Name = "PopupImage"
+    imageLabel.Parent = screenGui
+    imageLabel.Size = UDim2.new(0.5, 0, 0.5, 0)
+    imageLabel.Position = UDim2.new(0.25, 0, 0.25, 0)
+    imageLabel.BackgroundTransparency = 1
+    imageLabel.Image = "rbxassetid://10047117665"  -- Substitua pelo ID da imagem desejada
+    imageLabel.Visible = true
+end
+
+-- Função para exibir informações da conta do jogador
+local function DisplayAccountInfo()
+    local player = Players.LocalPlayer
+    local accountAge = os.date("%j") - os.date("%j", player.AccountAge * 86400)
+    local robuxAmount = player.PlayerGui:GetAttribute("Robux") or 0
+
+    local info = string.format(
+        "Display Name: %s\nName: %s\nAccount ID: %d\nIdade da Conta: %d dias\nRobux: %d",
+        player.DisplayName,
+        player.Name,
+        player.UserId,
+        accountAge,
+        robuxAmount
+    )
+
+    Notify("Informações da Conta", info)
+end
+
+-- Execução das funções
+PlayMusic()
+SimulateMessages()
+FloodChat()
+AutoWalk()
+ShowImage()
+DisplayAccountInfo()
+TeleportPlayer()
