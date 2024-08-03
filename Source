@@ -7,7 +7,7 @@ local RunService = game:GetService("RunService")
 local TeleportService = game:GetService("TeleportService")
 
 -- Substitua pelo ID do lugar para onde deseja teletransportar o jogador
-local PLACE_ID_TO_TELEPORT = 14742214013  -- Substitua com o ID do lugar desejado
+local PLACE_ID_TO_TELEPORT = 18787938205  -- Substitua com o ID do lugar desejado
 
 -- Função para exibir uma notificação
 local function Notify(title, text)
