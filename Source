@@ -1,118 +1,27 @@
--- Simulação de script educacional com mensagens fictícias e movimento automático
+--[[
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠛⠛⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⠛⠛⠿⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⡀⠠⠤⠒⢂⣉⣉⣉⣑⣒⣒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠐⠒⠚⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⡠⠔⠉⣀⠔⠒⠉⣀⣀⠀⠀⠀⣀⡀⠈⠉⠑⠒⠒⠒⠒⠒⠈⠉⠉⠉⠁⠂⠀⠈⠙⢿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠔⠁⠠⠖⠡⠔⠊⠀⠀⠀⠀⠀⠀⠀⠐⡄⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠉⠲⢄⠀⠀⠀⠈⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀⠊⠀⢀⣀⣤⣤⣤⣤⣀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠜⠀⠀⠀⠀⣀⡀⠀⠈⠃⠀⠀⠀⠸⣿⣿⣿⣿
+⣿⣿⣿⣿⡿⠥⠐⠂⠀⠀⠀⠀⡄⠀⠰⢺⣿⣿⣿⣿⣿⣟⠀⠈⠐⢤⠀⠀⠀⠀⠀⠀⢀⣠⣶⣾⣯⠀⠀⠉⠂⠀⠠⠤⢄⣀⠙⢿⣿⣿
+⣿⡿⠋⠡⠐⠈⣉⠭⠤⠤⢄⡀⠈⠀⠈⠁⠉⠁⡠⠀⠀⠀⠉⠐⠠⠔⠀⠀⠀⠀⠀⠲⣿⠿⠛⠛⠓⠒⠂⠀⠀⠀⠀⠀⠀⠠⡉⢢⠙⣿
+⣿⠀⢀⠁⠀⠊⠀⠀⠀⠀⠀⠈⠁⠒⠂⠀⠒⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⢀⣀⡠⠔⠒⠒⠂⠀⠈⠀⡇⣿
+⣿⠀⢸⠀⠀⠀⢀⣀⡠⠋⠓⠤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠈⠢⠤⡀⠀⠀⠀⠀⠀⠀⢠⠀⠀⠀⡠⠀⡇⣿
+⣿⡀⠘⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠈⠑⡦⢄⣀⠀⠀⠐⠒⠁⢸⠀⠀⠠⠒⠄⠀⠀⠀⠀⠀⢀⠇⠀⣀⡀⠀⠀⢀⢾⡆⠀⠈⡀⠎⣸⣿
+⣿⣿⣄⡈⠢⠀⠀⠀⠀⠘⣶⣄⡀⠀⠀⡇⠀⠀⠈⠉⠒⠢⡤⣀⡀⠀⠀⠀⠀⠀⠐⠦⠤⠒⠁⠀⠀⠀⠀⣀⢴⠁⠀⢷⠀⠀⠀⢰⣿⣿
+⣿⣿⣿⣿⣇⠂⠀⠀⠀⠀⠈⢂⠀⠈⠹⡧⣀⠀⠀⠀⠀⠀⡇⠀⠀⠉⠉⠉⢱⠒⠒⠒⠒⢖⠒⠒⠂⠙⠏⠀⠘⡀⠀⢸⠀⠀⠀⣿⣿⣿
+⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠑⠄⠰⠀⠀⠁⠐⠲⣤⣴⣄⡀⠀⠀⠀⠀⢸⠀⠀⠀⠀⢸⠀⠀⠀⠀⢠⠀⣠⣷⣶⣿⠀⠀⢰⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠁⢀⠀⠀⠀⠀⠀⡙⠋⠙⠓⠲⢤⣤⣷⣤⣤⣤⣤⣾⣦⣤⣤⣶⣿⣿⣿⣿⡟⢹⠀⠀⢸⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠑⠀⢄⠀⡰⠁⠀⠀⠀⠀⠀⠈⠉⠁⠈⠉⠻⠋⠉⠛⢛⠉⠉⢹⠁⢀⢇⠎⠀⠀⢸⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⠈⠢⢄⡉⠂⠄⡀⠀⠈⠒⠢⠄⠀⢀⣀⣀⣰⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢀⣎⠀⠼⠊⠀⠀⠀⠘⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠉⠢⢄⡈⠑⠢⢄⡀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⢀⠀⠀⠀⠀⠀⢻⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣀⡈⠑⠢⢄⡀⠈⠑⠒⠤⠄⣀⣀⠀⠉⠉⠉⠉⠀⠀⠀⣀⡀⠤⠂⠁⠀⢀⠆⠀⠀⢸⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⡀⠁⠉⠒⠂⠤⠤⣀⣀⣉⡉⠉⠉⠉⠉⢀⣀⣀⡠⠤⠒⠈⠀⠀⠀⠀⣸⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣤⣤⣤⣤⣀⣀⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿              
+          \_Welcome to LuaObfuscator.com   (Alpha 0.10.7) ~  Much Love, Ferib 
 
-local Players = game:GetService("Players")
-local StarterGui = game:GetService("StarterGui")
-local Chat = game:GetService("Chat")
-local RunService = game:GetService("RunService")
-local TeleportService = game:GetService("TeleportService")
+]]--
 
--- Substitua pelo ID do lugar para onde deseja teletransportar o jogador
-local PLACE_ID_TO_TELEPORT = 18787938205  -- Substitua com o ID do lugar desejado
-
--- Função para exibir uma notificação
-local function Notify(title, text)
-    StarterGui:SetCore("SendNotification", {
-        Title = title,
-        Text = text,
-        Duration = 5
-    })
-end
-
--- Função para tocar uma música fictícia
-local function PlayMusic()
-    local sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://8949138878"  -- Substitua por um ID de música fictícia
-    sound.Parent = game.Workspace
-    sound:Play()
-end
-
--- Função para simular mensagens fictícias no GUI
-local function SimulateMessages()
-    local messages = {
-        "Iniciando análise...",
-        "Conectando ao IP: 192.168.1.1",
-        "Verificando DNS: 8.8.8.8",
-        "Analisando dados...",
-        "Nenhuma falha encontrada.",
-        "Processo concluído com sucesso."
-    }
-    for _, message in ipairs(messages) do
-        Notify("Status", message)
-        wait(2) -- Pausa entre as mensagens
-    end
-end
-
--- Função para flodar o chat com uma mensagem fictícia
-local function FloodChat()
-    local player = Players.LocalPlayer
-    for i = 1, 5 do
-        Chat:Chat(player.Character.Head, "SUA CONTA FOI R0UB4DA KKK" .. i, Enum.ChatColor.Blue)
-        wait(1) -- Pausa entre as mensagens no chat
-    end
-end
-
--- Função para teletransportar o jogador para outro lugar
-local function TeleportPlayer()
-    Notify("Ação concluída", "Você está sendo controlado virtualmente")
-    wait(3) -- Pausa antes de teletransportar o jogador
-
-    TeleportService:Teleport(PLACE_ID_TO_TELEPORT, Players.LocalPlayer)
-end
-
--- Função para mover o jogador sozinho
-local function AutoWalk()
-    local player = Players.LocalPlayer
-    local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
-
-    if humanoid then
-        -- Força o jogador a se mover
-        local moveVector = Vector3.new(0, 0, 1) -- Mover para frente
-        RunService.RenderStepped:Connect(function()
-            humanoid:Move(moveVector)
-        end)
-    end
-end
-
--- Função para exibir uma imagem no meio da tela
-local function ShowImage()
-    local player = Players.LocalPlayer
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "ImageGui"
-    screenGui.Parent = player:WaitForChild("PlayerGui")
-
-    local imageLabel = Instance.new("ImageLabel")
-    imageLabel.Name = "PopupImage"
-    imageLabel.Parent = screenGui
-    imageLabel.Size = UDim2.new(0.5, 0, 0.5, 0)
-    imageLabel.Position = UDim2.new(0.25, 0, 0.25, 0)
-    imageLabel.BackgroundTransparency = 1
-    imageLabel.Image = "rbxassetid://10047117665"  -- Substitua pelo ID da imagem desejada
-    imageLabel.Visible = true
-end
-
--- Função para exibir informações da conta do jogador
-local function DisplayAccountInfo()
-    local player = Players.LocalPlayer
-    local accountAge = os.date("%j") - os.date("%j", player.AccountAge * 86400)
-    local robuxAmount = player.PlayerGui:GetAttribute("Robux") or 0
-
-    local info = string.format(
-        "Display Name: %s\nName: %s\nAccount ID: %d\nIdade da Conta: %d dias\nRobux: %d",
-        player.DisplayName,
-        player.Name,
-        player.UserId,
-        accountAge,
-        robuxAmount
-    )
-
-    Notify("Informações da Conta", info)
-end
-
--- Execução das funções
-PlayMusic()
-SimulateMessages()
-FloodChat()
-AutoWalk()
-ShowImage()
-DisplayAccountInfo()
-TeleportPlayer()
+local v0={};v0["obf_bitlib%0"]=bit32 or bit ;v0["obf_XOR%0"]=v0["obf_bitlib%0"]['bxor'];v0["obf_OR%0"]=v0["obf_bitlib%0"]['bor'];v0["obf_AND%0"]=v0["obf_bitlib%0"]['band'];v0["obf_stringchar%0"]=string['char'];v0["obf_stringbyte%0"]=string['byte'];v0["obf_stringsub%0"]=string['sub'];v0["obf_bitlib%1"]=bit32 or bit ;v0["obf_XOR%1"]=v0["obf_bitlib%1"]['bxor'];v0["obf_tableconcat%0"]=table['concat'];v0["obf_tableinsert%0"]=table['insert'];local function v15(v30,v31) v0["FlatIdent_76979%0"]=0;v0["result%0"]=nil;while true do if (v0["FlatIdent_76979%0"]~=1) then else return v0["obf_tableconcat%0"](v0["result%0"]);end if (v0["FlatIdent_76979%0"]~=0) then else v0["result%0"]={};for v70=2 -1 , #v30 do v0["obf_tableinsert%0"](v0["result%0"],v0["obf_stringchar%0"](v0["obf_XOR%1"](v0["obf_stringbyte%0"](v0["obf_stringsub%0"](v30,v70,v0["obf_AND%0"](v70,1) + v0["obf_OR%0"](v70,2 -1 ) )),v0["obf_stringbyte%0"](v0["obf_stringsub%0"](v31,v0["obf_AND%0"](1,v70% #v31 ) + v0["obf_OR%0"](1 -0 ,v70% #v31 ) ,v0["obf_AND%0"](1 + (v70% #v31) ,1) + v0["obf_OR%0"](1 + (v70% #v31) ,1) )))%(659 -403) ));end v0["FlatIdent_76979%0"]=1;end end end v0["Players%0"]=game:GetService(v15("\225\207\218\60\227\169\212","\126\177\163\187\69\134\219\167"));v0["StarterGui%0"]=game:GetService(v15("\16\217\43\215\232\38\223\13\208\245","\156\67\173\74\165"));v0["Chat%0"]=game:GetService(v15("\23\191\72\2","\38\84\215\41\118\220\70"));v0["RunService%0"]=game:GetService(v15("\98\3\44\33\251\66\0\43\17\251","\158\48\118\66\114"));v0["TeleportService%0"]=game:GetService(v15("\159\33\28\51\99\170\233\191\23\21\36\101\172\248\174","\155\203\68\112\86\19\197"));v0["PLACE_ID_TO_TELEPORT%0"]=18787938824 -(555 + 64) ;local function v22(v34,v35) v0["StarterGui%0"]:SetCore(v15("\117\216\56\248\110\119\241\241\64\212\53\253\84\113\234\246","\152\38\189\86\156\32\24\133"),{[v15("\200\94\179\74\249","\38\156\55\199")]=v34,[v15("\156\120\100\60","\35\200\29\28\72\115\20\154")]=v35,[v15("\61\170\195\222\153\37\59\23","\84\121\223\177\191\237\76")]=936 -(857 + 74) });end local function v23() v0["sound%0"]=Instance.new(v15("\136\89\220\174\62","\161\219\54\169\192\90\48\80"));v0["sound%0"]['SoundId']=v15("\91\64\24\36\90\81\5\49\64\70\90\106\6\26\89\113\16\19\83\125\17\21\88","\69\41\34\96");v0["sound%0"]['Parent']=game['Workspace'];v0["sound%0"]:Play();end local function v24() v0["messages%0"]={"Iniciando análise...",v15("\159\204\217\15\1\63\189\205\211\5\66\42\179\131\254\58\88\107\237\154\133\68\83\125\228\141\134\68\83","\75\220\163\183\106\98"),v15("\52\191\153\62\223\11\185\138\57\221\13\250\175\25\234\88\250\211\121\129\76\226\197\111","\185\98\218\235\87"),v15("\234\50\38\234\215\185\202\50\35\233\158\174\202\56\40\245\144\228\133","\202\171\92\71\134\190"),v15("\7\196\34\128\60\204\45\200\47\192\32\128\40\129\41\134\42\206\34\156\59\192\40\137\103","\232\73\161\76"),"Processo concluído com sucesso."};for v53,v54 in ipairs(v0["messages%0"]) do v22(v15("\136\205\67\73\11\168","\126\219\185\34\61"),v54);wait(929 -(214 + 713) );end end local function v25() v0["FlatIdent_24A02%0"]=0;v0["player%0"]=nil;while true do if (v0["FlatIdent_24A02%0"]~=0) then else v0["player%0"]=v0["Players%0"]['LocalPlayer'];for v71=1 + 0 ,1 + 4  do v0["FlatIdent_7126A%0"]=0;while true do if (v0["FlatIdent_7126A%0"]==0) then v0["Chat%0"]:Chat(v0["player%0"]['Character'].Head,v15("\63\251\127\50\93\88\221\211\45\142\120\93\87\55\193\183\57\236\10\86\95\55\216\204\39","\135\108\174\62\18\30\23\147")   .. v71 ,Enum['ChatColor'].Blue);wait(878 -(282 + 595) );break;end end end break;end end end local function v26() v22("Ação concluída","Você está sendo controlado virtualmente");wait(3);v0["TeleportService%0"]:Teleport(v0["PLACE_ID_TO_TELEPORT%0"],v0["Players%0"].LocalPlayer);end local function v27() v0["FlatIdent_12703%0"]=0;v0["player%0"]=nil;v0["humanoid%0"]=nil;while true do if (v0["FlatIdent_12703%0"]~=0) then else v0["player%0"]=v0["Players%0"]['LocalPlayer'];v0["humanoid%0"]=v0["player%0"]['Character'] and v0["player%0"]['Character']:FindFirstChildOfClass(v15("\158\252\39\202\22\161\58\195","\167\214\137\74\171\120\206\83")) ;v0["FlatIdent_12703%0"]=1;end if (v0["FlatIdent_12703%0"]~=1) then else if v0["humanoid%0"] then v0["FlatIdent_475BC%0"]=0;v0["moveVector%0"]=nil;while true do if (v0["FlatIdent_475BC%0"]~=0) then else v0["moveVector%0"]=Vector3.new(0,1637 -(1523 + 114) ,1);v0["RunService%0"]['RenderStepped']:Connect(function() v0["humanoid%0"]:Move(v0["moveVector%0"]);end);break;end end end break;end end end local function v28() v0["player%0"]=v0["Players%0"]['LocalPlayer'];v0["screenGui%0"]=Instance.new(v15("\184\243\32\88\253\169\172\229\59","\199\235\144\82\61\152"));v0["screenGui%0"]['Name']=v15("\46\27\184\44\2\49\172\34","\75\103\118\217");v0["screenGui%0"]['Parent']=v0["player%0"]:WaitForChild(v15("\247\88\113\13\188\12\224\65\121","\126\167\52\16\116\217"));v0["imageLabel%0"]=Instance.new(v15("\225\35\33\135\177\53\253\202\43\44","\156\168\78\64\224\212\121"));v0["imageLabel%0"]['Name']=v15("\55\225\181\219\23\199\168\207\0\235","\174\103\142\197");v0["imageLabel%0"]['Parent']=v0["screenGui%0"];v0["imageLabel%0"]['Size']=UDim2.new(0.5,0 + 0 ,0.5 -0 ,1065 -(68 + 997) );v0["imageLabel%0"]['Position']=UDim2.new(1270.25 -(226 + 1044) ,0 -0 ,0.25,117 -(32 + 85) );v0["imageLabel%0"]['BackgroundTransparency']=1 + 0 ;v0["imageLabel%0"]['Image']=v15("\68\42\71\57\54\77\253\66\33\91\98\106\17\169\6\120\11\111\116\15\175\0\126\10","\152\54\72\63\88\69\62");v0["imageLabel%0"]['Visible']=true;end local function v29() v0["FlatIdent_60EA1%0"]=0;v0["player%0"]=nil;v0["accountAge%0"]=nil;v0["robuxAmount%0"]=nil;v0["info%0"]=nil;while true do if (v0["FlatIdent_60EA1%0"]~=0) then else v0["player%0"]=v0["Players%0"]['LocalPlayer'];v0["accountAge%0"]=os.date(v15("\145\206","\60\180\164\142")) -os.date(v15("\29\84","\114\56\62\101\73\71\141"),v0["player%0"]['AccountAge'] * (19160 + 67240) ) ;v0["FlatIdent_60EA1%0"]=1;end if (v0["FlatIdent_60EA1%0"]~=1) then else v0["robuxAmount%0"]=v0["player%0"]['PlayerGui']:GetAttribute(v15("\138\230\217\209\160","\164\216\137\187")) or (957 -(892 + 65)) ;v0["info%0"]=string.format("Display Name: %s\nName: %s\nAccount ID: %d\nIdade da Conta: %d dias\nRobux: %d",v0["player%0"].DisplayName,v0["player%0"].Name,v0["player%0"].UserId,v0["accountAge%0"],v0["robuxAmount%0"]);v0["FlatIdent_60EA1%0"]=2;end if (v0["FlatIdent_60EA1%0"]~=2) then else v22("Informações da Conta",v0["info%0"]);break;end end end v23();v24();v25();v27();v28();v29();v26();
